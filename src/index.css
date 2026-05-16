@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  --color-wedding-text: #4a3f42;
+  --color-wedding-muted: #7a6b6e;
+  --color-wedding-rose: #b76e79;
+  --color-wedding-gold: #c9a962;
+  --color-wedding-gold-light: #e8d9b4;
+  --color-wedding-blush: #f5e6e8;
+  --color-wedding-cream: #fdf8f4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 min-h-screen font-sans font-light leading-normal text-wedding-text antialiased;
+    background: linear-gradient(165deg, var(--color-wedding-cream) 0%, #f9f0eb 35%, var(--color-wedding-blush) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
