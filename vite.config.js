@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 
 /** Imagen de vista previa al compartir el link → archivo en public/ */
-const SHARE_IMAGE = "/couple.png";
+const SHARE_IMAGE = "/favicon.jpg";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
       .replace("%BUILD_CANONICAL%", canonicalLine)
       .replace("%BUILD_APPLE_TOUCH%", appleTouchLine)
       .replaceAll("%OG_IMAGE%", ogImage)
-      .replaceAll("%OG_IMAGE_TYPE%", "image/png");
+      .replaceAll("%OG_IMAGE_TYPE%", "image/jpeg");
   };
 
   return {
