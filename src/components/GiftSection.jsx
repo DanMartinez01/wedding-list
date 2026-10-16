@@ -14,7 +14,7 @@ export const GiftSection = () => {
         className="rise-in mb-8 text-center text-[0.95rem] text-wedding-muted"
         style={{ animationDelay: "0.52s" }}
       >
-        Toca una tarjeta para ver el alias de transferencia.
+        Toca una tarjeta para pagar con Mercado Pago.
       </p>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6 [perspective:1200px]">
         {GIFTS.map((gift, index) => (
