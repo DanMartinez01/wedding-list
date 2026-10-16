@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { TRANSFER_ALIAS } from "../data/gifts";
 
-export const GiftCard = ({ gift, transferAlias = TRANSFER_ALIAS }) => {
+export const GiftCard = ({ gift, index = 0, transferAlias = TRANSFER_ALIAS }) => {
   const [flipped, setFlipped] = useState(false);
   const [favorite, setFavorite] = useState(false);
 
@@ -16,7 +16,10 @@ export const GiftCard = ({ gift, transferAlias = TRANSFER_ALIAS }) => {
   };
 
   return (
-    <div className="h-[200px] [perspective:1000px]">
+    <div
+      className="rise-in h-[200px] [perspective:1000px]"
+      style={{ animationDelay: `${0.6 + index * 0.07}s` }}
+    >
       <div className="relative h-full w-full">
         <button
           type="button"
@@ -48,7 +51,7 @@ export const GiftCard = ({ gift, transferAlias = TRANSFER_ALIAS }) => {
           className="h-full w-full cursor-pointer rounded-[18px] outline-none focus-visible:shadow-[0_0_0_3px_var(--color-wedding-cream),0_0_0_5px_var(--color-wedding-rose)]"
         >
           <div
-            className="relative h-full w-full rounded-[18px] shadow-[0_8px_32px_rgba(74,63,66,0.08)] [transform-style:preserve-3d] motion-safe:transition-transform motion-safe:duration-[650ms] motion-safe:ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none data-[flipped=true]:[transform:rotateY(180deg)] data-[favorite=true]:data-[flipped=false]:shadow-[0_10px_36px_rgba(74,63,66,0.14),0_0_0_2px_#e8d9b4]"
+            className="relative h-full w-full rounded-[18px] shadow-[0_8px_32px_rgba(110,124,94,0.1)] [transform-style:preserve-3d] motion-safe:transition-transform motion-safe:duration-[650ms] motion-safe:ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none data-[flipped=true]:[transform:rotateY(180deg)] data-[favorite=true]:data-[flipped=false]:shadow-[0_10px_36px_rgba(110,124,94,0.16),0_0_0_2px_#a8bd9d]"
             data-flipped={flipped || undefined}
             data-favorite={favorite || undefined}
           >
@@ -67,7 +70,7 @@ export const GiftCard = ({ gift, transferAlias = TRANSFER_ALIAS }) => {
               </p>
             </div>
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center rounded-[18px] border border-white/85 bg-gradient-to-br from-[#fffcf8]/98 to-wedding-gold-light/35 px-5 py-[1.35rem] backface-hidden [transform:rotateY(180deg)]">
+            <div className="absolute inset-0 flex flex-col items-center justify-center rounded-[18px] border border-white/85 bg-gradient-to-br from-[#f7f8ef]/98 to-wedding-gold-light/40 px-5 py-[1.35rem] backface-hidden [transform:rotateY(180deg)]">
               <p className="mb-2 mt-0 text-[0.72rem] uppercase tracking-[0.12em] text-wedding-muted">
                 Alias para transferir
               </p>

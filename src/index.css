@@ -4,13 +4,13 @@
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
 
-  --color-wedding-text: #4a3f42;
-  --color-wedding-muted: #7a6b6e;
-  --color-wedding-rose: #b76e79;
-  --color-wedding-gold: #c9a962;
-  --color-wedding-gold-light: #e8d9b4;
-  --color-wedding-blush: #f5e6e8;
-  --color-wedding-cream: #fdf8f4;
+  --color-wedding-text: #6e7c5e;
+  --color-wedding-muted: #9aae8f;
+  --color-wedding-rose: #6e7c5e;
+  --color-wedding-gold: #6e7c5e;
+  --color-wedding-gold-light: #a8bd9d;
+  --color-wedding-blush: #a8bd9d;
+  --color-wedding-cream: #ebf2cb;
 }
 
 @layer base {
@@ -20,12 +20,82 @@
 
   body {
     @apply m-0 min-h-screen font-sans font-light leading-normal text-wedding-text antialiased;
-    background: linear-gradient(165deg, var(--color-wedding-cream) 0%, #f9f0eb 35%, var(--color-wedding-blush) 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f8ef 12%, #ebf2cb 46%, #c5d4a8 74%, #a8bd9d 100%);
+    background-attachment: fixed;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes petal-float {
+  0% {
+    transform: translate3d(0, -12vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  14% {
+    opacity: var(--petal-opacity, 0.55);
+  }
+
+  40% {
+    transform: translate3d(calc(var(--drift, 28px) * 0.4), 26vh, 0) rotate(16deg);
+    opacity: var(--petal-opacity, 0.55);
+  }
+
+  68% {
+    transform: translate3d(var(--drift, 28px), 54vh, 0) rotate(32deg);
+    opacity: calc(var(--petal-opacity, 0.55) * 0.4);
+  }
+
+  100% {
+    transform: translate3d(calc(var(--drift, 28px) * 0.55), 90vh, 0) rotate(48deg);
+    opacity: 0;
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.petal {
+  position: absolute;
+  display: block;
+  animation-name: petal-float;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in,
+  .petal {
+    animation: none;
+  }
+
+  .rise-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .petal {
+    display: none;
   }
 }
